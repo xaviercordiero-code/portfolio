@@ -1,11 +1,400 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio BTS SIO SISR</title>
+<meta name="description" content="Portfolio BTS SIO option SISR : parcours, situations professionnelles, infrastructure, certifications et veille technologique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Nunito:wght@400;600;700&family=JetBrains+Mono:wght@400;600&family=VT323&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   COULEURS ET POLICES : modifiez ici pour changer le thème
+   ========================================================= */
+:root{
+  --fond:#0d0b24; --fond2:#141236; --carte:#18163f; --carte2:#1e1b4b;
+  --trait:#3a3580; --texte:#e7e6f7; --doux:#a9a7d0; --pale:#7d7aa8;
+  --violet:#a78bfa; --cyan:#5ee7f7; --rose:#f472b6; --vert:#4ade80; --orange:#fbbf24;
+  --titre:'Rajdhani',sans-serif; --corps:'Nunito',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  --rayon:12px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--fond);color:var(--texte);font-family:var(--corps);line-height:1.6;min-height:100vh;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 15% 0%,rgba(167,139,250,.18),transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 30%,rgba(94,231,247,.10),transparent 60%),
+    linear-gradient(rgba(167,139,250,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(167,139,250,.05) 1px,transparent 1px);
+  background-size:auto,auto,40px 40px,40px 40px;background-attachment:fixed}
+a{color:var(--cyan)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---------- en-tête ---------- */
+header{text-align:center;padding:28px 16px 0}
+.logo{font-family:'VT323',monospace;font-size:clamp(1.8rem,5vw,2.4rem);letter-spacing:.12em;margin:0;color:#fff;
+  text-shadow:0 0 12px rgba(94,231,247,.6),0 0 2px #fff}
+.badges{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:18px 0 22px}
+.badge{font-family:var(--mono);font-size:.78rem;padding:6px 14px;border-radius:6px;border:1px solid;background:rgba(255,255,255,.03)}
+.badge.v{color:var(--violet);border-color:rgba(167,139,250,.5)} .badge.c{color:var(--cyan);border-color:rgba(94,231,247,.45)} .badge.r{color:var(--rose);border-color:rgba(244,114,182,.45)}
+nav{position:sticky;top:0;z-index:20;background:rgba(13,11,36,.88);backdrop-filter:blur(8px);border-top:1px solid var(--trait);border-bottom:1px solid var(--trait)}
+nav ul{list-style:none;margin:0 auto;padding:0 12px;max-width:1100px;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav li:first-child{margin-left:auto}nav li:last-child{margin-right:auto}
+nav ul::-webkit-scrollbar{display:none}
+nav a{display:block;padding:14px 12px;font-family:var(--titre);font-weight:600;font-size:.88rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--pale);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+nav a:hover{color:var(--texte)}
+nav a[aria-current="page"]{color:var(--cyan);border-bottom-color:var(--cyan)}
+nav a[aria-current="page"]::before{content:"▶ ";font-size:.7em}
+
+/* ---------- sections ---------- */
+main{max-width:1100px;margin:0 auto;padding:32px 20px 64px}
+section{display:none;animation:apparait .35s ease}
+section.active{display:block}
+@keyframes apparait{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){section{animation:none}html{scroll-behavior:auto}}
+.chemin{font-family:var(--mono);font-size:.75rem;letter-spacing:.15em;color:var(--pale);text-transform:uppercase;margin:0 0 6px}
+h2{font-family:var(--titre);font-weight:700;font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.1;margin:0 0 10px}
+h2 em{font-style:normal;color:var(--cyan);text-shadow:0 0 18px rgba(94,231,247,.45)}
+.ligne{height:2px;margin:12px 0 28px;background:linear-gradient(90deg,var(--violet),var(--cyan),transparent)}
+h3{font-family:var(--titre);font-weight:700;font-size:1.3rem;margin:0 0 8px}
+.cadre{background:var(--carte);border:1px solid var(--trait);border-radius:var(--rayon);padding:24px 28px}
+.intro{text-align:center;color:var(--doux);font-size:1.02rem}
+.intro b{color:var(--violet)}
+.grille{display:grid;gap:18px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))} .g3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))} .g2{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.carte{background:var(--carte);border:1px solid var(--trait);border-radius:var(--rayon);padding:20px;transition:transform .15s,border-color .15s,box-shadow .15s}
+.carte:hover{transform:translateY(-3px);border-color:var(--violet);box-shadow:0 10px 30px rgba(167,139,250,.12)}
+.info{text-align:center}
+.info .ico{font-size:1.8rem}
+.info .lab{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-top:6px}
+.info .val{font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tag{font-family:var(--mono);font-size:.72rem;padding:2px 9px;border-radius:999px;background:rgba(167,139,250,.12);color:var(--violet);border:1px solid rgba(167,139,250,.3)}
+.tag.c{background:rgba(94,231,247,.08);color:var(--cyan);border-color:rgba(94,231,247,.3)}
+.tag.r{background:rgba(244,114,182,.08);color:var(--rose);border-color:rgba(244,114,182,.3)}
+.mt{margin-top:28px}
+.doux{color:var(--doux)}
+
+/* compétences */
+.comp{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:12px;margin:10px 0;font-size:.92rem}
+.barre{height:8px;border-radius:99px;background:#2a2766;overflow:hidden}
+.barre i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--violet),var(--cyan))}
+.comp span:last-child{font-family:var(--mono);font-size:.78rem;color:var(--pale);text-align:right}
+
+/* parcours (frise) */
+.frise{position:relative;margin:0;padding:0 0 0 28px;list-style:none}
+.frise::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--violet),var(--cyan))}
+.frise li{position:relative;margin-bottom:18px}
+.frise li::before{content:"";position:absolute;left:-26px;top:22px;width:14px;height:14px;border-radius:50%;background:var(--fond);border:3px solid var(--cyan);box-shadow:0 0 10px rgba(94,231,247,.6)}
+.date{font-family:var(--mono);font-size:.78rem;color:var(--cyan)}
+
+/* situations pro */
+.filtres{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.filtres button{font:600 .85rem var(--titre);letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:8px;cursor:pointer;
+  background:transparent;color:var(--doux);border:1px solid var(--trait)}
+.filtres button[aria-pressed="true"]{background:rgba(94,231,247,.12);color:var(--cyan);border-color:var(--cyan)}
+.sp{display:flex;flex-direction:column}
+.sp .num{font-family:var(--mono);font-size:.75rem;color:var(--rose)}
+.sp p{color:var(--doux);font-size:.93rem;flex:1}
+.btn{display:inline-flex;align-items:center;gap:6px;font:700 .85rem var(--titre);letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;border-radius:8px;
+  border:1px solid var(--cyan);color:var(--cyan);background:transparent;cursor:pointer;text-decoration:none;align-self:flex-start;margin-top:12px}
+.btn:hover{background:rgba(94,231,247,.1)}
+dialog{max-width:720px;width:calc(100% - 32px);background:var(--fond2);color:var(--texte);border:1px solid var(--violet);border-radius:var(--rayon);padding:0;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+dialog::backdrop{background:rgba(5,4,20,.75);backdrop-filter:blur(3px)}
+.dlg{padding:26px 28px}
+.dlg h4{font-family:var(--titre);font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin:18px 0 6px}
+.dlg ul{margin:0;padding-left:20px;color:var(--doux)}
+.fermer{float:right;background:none;border:0;color:var(--pale);font-size:1.6rem;cursor:pointer;line-height:1}
+
+/* infrastructure */
+.schema{width:100%;height:auto;display:block}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{padding:10px 12px;border-bottom:1px solid var(--trait);text-align:left;vertical-align:top}
+th{font-family:var(--titre);letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);font-size:.85rem;background:rgba(94,231,247,.05)}
+td code{font-family:var(--mono);font-size:.82rem;color:var(--violet)}
+.defile{overflow-x:auto}
+
+/* certifications */
+.etat{font-family:var(--mono);font-size:.72rem;padding:2px 8px;border-radius:6px;float:right}
+.etat.ok{color:var(--vert);background:rgba(74,222,128,.1)} .etat.en{color:var(--orange);background:rgba(251,191,36,.1)} .etat.prevu{color:var(--pale);background:rgba(125,122,168,.12)}
+
+/* veille */
+.article{border-left:2px solid var(--violet);padding:4px 0 4px 16px;margin:14px 0}
+.article .date{display:block}
+
+/* grilles */
+.ok-c{color:var(--vert);text-align:center;font-weight:700}
+.vide-c{color:#3a3870;text-align:center}
+.tabsyn th:not(:first-child),.tabsyn td:not(:first-child){text-align:center;width:72px}
+
+/* contact */
+.contact a.carte{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--texte)}
+.contact .ico{font-size:1.6rem}
+footer{text-align:center;color:var(--pale);font-size:.8rem;padding:24px 16px 40px;border-top:1px solid var(--trait)}
+
+@media (max-width:640px){
+  .cadre{padding:18px}
+  .comp{grid-template-columns:110px 1fr 36px}
+  .g2,.g3{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
-    <h1>HELLO WORLD</h1>
+<a class="sr" href="#contenu">Aller au contenu</a>
+<header>
+  <h1 class="logo" id="logo">BTS SIO · SISR</h1>
+  <div class="badges" id="badges"></div>
+</header>
+<nav aria-label="Sections du portfolio"><ul id="menu"></ul></nav>
+<main id="contenu"></main>
+<dialog id="detail" aria-labelledby="detail-titre"><div class="dlg" id="detail-corps"></div></dialog>
+<footer id="pied"></footer>
+
+<script>
+/* =====================================================================
+   VOS INFORMATIONS : tout le contenu du portfolio est ici.
+   Remplacez les textes entre guillemets ; le reste de la page s'adapte.
+   ===================================================================== */
+const P = {
+  prenom: "Prénom", nom: "NOM",
+  titre: "BTS SIO · SISR",
+  badges: [["v", "Administration système"], ["c", "Cybersécurité"], ["r", "Infrastructure réseau"]],
+  presentation: "Je m'appelle <b>Prénom</b>, étudiant(e) en <b>BTS SIO option SISR</b>, spécialisé(e) dans les infrastructures réseaux et les systèmes informatiques. Curieux(se) et rigoureux(se), je développe mes compétences à travers des projets concrets en laboratoire et en entreprise.",
+  infos: [["🎯", "Spécialité", "Option SISR"], ["🏫", "Formation", "Lycée Jacques Brel"], ["🔒", "Focus", "Réseaux & sécurité"], ["💼", "Objectif", "Alternance 2026-2027"]],
+  competences: [["Réseaux (VLAN, routage)", 80], ["Windows Server / AD", 75], ["Linux (Debian)", 70], ["Virtualisation (Proxmox)", 70], ["Sécurité (pare-feu, VPN)", 60], ["Scripts (Bash, PowerShell)", 55]],
+
+  parcours: [
+    ["2025 – 2027", "BTS SIO option SISR", "Lycée Jacques Brel", "Administration des systèmes et des réseaux, cybersécurité, gestion de projet."],
+    ["Mai – juin 2026", "Stage de 1re année", "Entreprise (ville)", "Déploiement d'un serveur GLPI et inventaire du parc avec l'agent GLPI."],
+    ["Janvier 2027", "Stage de 2e année", "Entreprise (ville)", "Segmentation du réseau en VLAN et mise en place d'un pare-feu pfSense."],
+    ["2025", "Baccalauréat", "Lycée (ville)", "Spécialité NSI / STI2D / …"]
+  ],
+  outils: ["Proxmox VE", "Windows Server 2025", "Debian 13", "pfSense", "Cisco Packet Tracer", "GLPI", "Wireshark", "Zabbix", "Docker", "Git"],
+
+  // bloc : 1 = support et mise à disposition, 2 = administration systèmes et réseaux, 3 = cybersécurité
+  situations: [
+    { id: "SP1", titre: "Gestion de parc avec GLPI", bloc: 1, cadre: "Stage",
+      resume: "Installation de GLPI sur Debian, inventaire automatique des postes et mise en place d'un support par tickets.",
+      contexte: "L'entreprise n'avait aucun inventaire de son parc de 40 postes ni de suivi des demandes.",
+      realise: ["Installation de GLPI 10 (Apache, MariaDB, PHP)", "Déploiement de l'agent GLPI sur les postes", "Catégories de tickets et règles d'attribution"],
+      competences: ["Gérer le patrimoine informatique", "Répondre aux incidents et aux demandes"],
+      outils: ["GLPI", "Debian", "MariaDB"], doc: "" },
+    { id: "SP2", titre: "Segmentation réseau en VLAN", bloc: 2, cadre: "Laboratoire",
+      resume: "Découpage d'un réseau à plat en trois VLAN avec routage inter-VLAN et serveur DHCP.",
+      contexte: "Tous les postes, serveurs et imprimantes partageaient le même réseau.",
+      realise: ["Plan d'adressage et choix des VLAN", "Configuration des ports access et trunk", "Routage inter-VLAN et relais DHCP"],
+      competences: ["Concevoir une solution d'infrastructure réseau", "Installer, tester et déployer"],
+      outils: ["Cisco", "Packet Tracer", "pfSense"], doc: "" },
+    { id: "SP3", titre: "Domaine Active Directory et GPO", bloc: 2, cadre: "Laboratoire",
+      resume: "Création d'un domaine, d'unités d'organisation et de stratégies de groupe pour les utilisateurs.",
+      contexte: "Centraliser les comptes et appliquer les mêmes règles sur tous les postes.",
+      realise: ["Installation d'AD DS et DNS", "Arborescence d'UO et groupes", "GPO : lecteurs réseau, fond d'écran, sécurité"],
+      competences: ["Exploiter, dépanner et superviser une solution d'infrastructure"],
+      outils: ["Windows Server", "AD DS", "GPO"], doc: "" },
+    { id: "SP4", titre: "HTTPS sur un serveur web multi-sites", bloc: 3, cadre: "Laboratoire",
+      resume: "Trois sites Apache passés en HTTPS avec des certificats auto-signés et une redirection automatique.",
+      contexte: "Les sites internes circulaient en clair sur le réseau.",
+      realise: ["Génération des certificats avec OpenSSL", "VirtualHost *:443 et redirection HTTP vers HTTPS", "Approbation des certificats sur les postes"],
+      competences: ["Assurer la cybersécurité d'une infrastructure", "Protéger les données à caractère personnel"],
+      outils: ["Apache", "OpenSSL", "Debian"], doc: "" },
+    { id: "SP5", titre: "Supervision avec Zabbix", bloc: 2, cadre: "Laboratoire",
+      resume: "Supervision des serveurs et des équipements réseau avec alertes par e-mail.",
+      contexte: "Les pannes étaient découvertes par les utilisateurs.",
+      realise: ["Installation du serveur Zabbix", "Agents et SNMP sur les équipements", "Déclencheurs et notifications"],
+      competences: ["Exploiter, dépanner et superviser une solution d'infrastructure"],
+      outils: ["Zabbix", "SNMP", "Debian"], doc: "" },
+    { id: "SP6", titre: "VPN d'accès distant", bloc: 3, cadre: "Stage",
+      resume: "Accès sécurisé au réseau de l'entreprise pour les salariés en télétravail.",
+      contexte: "Les salariés devaient accéder aux partages depuis leur domicile.",
+      realise: ["Serveur OpenVPN sur pfSense", "Certificats par utilisateur", "Règles de pare-feu et tests"],
+      competences: ["Assurer la cybersécurité d'une infrastructure"],
+      outils: ["pfSense", "OpenVPN"], doc: "" }
+  ],
+
+  infra: {
+    texte: "Mon laboratoire tourne sur un hyperviseur Proxmox. Il reproduit le réseau d'une PME : un pare-feu, trois VLAN et les services de base.",
+    machines: [
+      ["FW-01", "pfSense", "Pare-feu, routage inter-VLAN, VPN", "<code>10.0.x.254</code>"],
+      ["DC-01", "Windows Server 2025", "AD DS, DNS, DHCP", "<code>10.0.10.10</code>"],
+      ["SRV-WEB", "Debian 13", "Apache, HTTPS", "<code>10.0.20.20</code>"],
+      ["SRV-GLPI", "Debian 13", "GLPI, MariaDB", "<code>10.0.10.30</code>"],
+      ["SUPERVISION", "Debian 13", "Zabbix", "<code>10.0.10.40</code>"],
+      ["PC-CLIENT", "Windows 11", "Poste de test du domaine", "<code>DHCP</code>"]
+    ]
+  },
+
+  certifications: [
+    ["Cisco CCNA 1 – Introduction to Networks", "Cisco Networking Academy", "ok", "2026"],
+    ["SecNumacadémie", "ANSSI", "ok", "2026"],
+    ["Pix (niveau avancé)", "Pix", "en", "2026"],
+    ["Atelier RGPD", "CNIL", "ok", "2025"],
+    ["Cisco CCNA 2 – Switching, Routing", "Cisco Networking Academy", "prevu", "2027"],
+    ["TOEIC", "ETS", "prevu", "2027"]
+  ],
+
+  veille: {
+    sujet: "La sécurité des accès distants : VPN, ZTNA et authentification forte",
+    pourquoi: "Avec le télétravail, l'accès au réseau de l'entreprise depuis l'extérieur est devenu une cible majeure. Je suis l'évolution des solutions et des attaques qui les visent.",
+    outils: ["Flux RSS (Feedly)", "Alertes Google", "CERT-FR", "LinkedIn", "Le Monde Informatique"],
+    articles: [
+      ["Octobre 2026", "CERT-FR", "Vulnérabilités critiques sur des passerelles VPN : appliquer les correctifs en urgence."],
+      ["Septembre 2026", "ANSSI", "Recommandations sur l'authentification multifacteur."],
+      ["Juin 2026", "Le Monde Informatique", "Le ZTNA remplace progressivement le VPN dans les grandes entreprises."]
+    ]
+  },
+
+  // tableau de synthèse : quelles compétences chaque situation mobilise
+  grille: {
+    competences: ["Gérer le patrimoine informatique", "Répondre aux incidents et aux demandes", "Développer la présence en ligne",
+      "Travailler en mode projet", "Mettre à disposition un service", "Organiser son développement professionnel"],
+    // pour chaque situation (dans l'ordre SP1, SP2…), les numéros des compétences cochées (1 à 6)
+    coches: { SP1: [1, 2, 5], SP2: [4, 5], SP3: [1, 5], SP4: [3, 5], SP5: [2, 5, 6], SP6: [2, 4, 5] },
+    pdf: "" // lien vers votre tableau de synthèse officiel en PDF, par exemple "docs/tableau-synthese.pdf"
+  },
+
+  contact: [
+    ["✉️", "E-mail", "prenom.nom@exemple.fr", "mailto:prenom.nom@exemple.fr"],
+    ["💼", "LinkedIn", "linkedin.com/in/prenom-nom", "https://www.linkedin.com/"],
+    ["🐙", "GitHub", "github.com/votre-compte", "https://github.com/"],
+    ["📄", "CV", "Télécharger mon CV (PDF)", "cv.pdf"]
+  ]
+};
+
+/* =====================================================================
+   CONSTRUCTION DE LA PAGE (pas besoin de modifier en dessous)
+   ===================================================================== */
+const SECTIONS = [["accueil", "Accueil"], ["parcours", "Parcours"], ["situations", "Situations pro"], ["infrastructure", "Infrastructure"],
+  ["certifications", "Certifications"], ["veille", "Veille techno"], ["grilles", "Grilles"], ["contact", "Contact"]];
+const BLOCS = { 1: ["Bloc 1 · Support", ""], 2: ["Bloc 2 · SISR", "c"], 3: ["Bloc 3 · Cybersécurité", "r"] };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const tags = (l, cls = "") => `<div class="tags">${l.map(t => `<span class="tag ${cls}">${esc(t)}</span>`).join("")}</div>`;
+const entete = (chemin, titre) => `<p class="chemin">// ${chemin}</p><h2>${titre}</h2><div class="ligne"></div>`;
+
+const vues = {
+  accueil: () => `${entete("accueil", "Bienvenue sur mon <em>Portfolio</em>")}
+    <div class="cadre intro"><p style="margin:0">${P.presentation}</p></div>
+    <div class="grille g4 mt">${P.infos.map(([i, l, v]) => `<div class="carte info"><div class="ico" aria-hidden="true">${i}</div><div class="lab">${esc(l)}</div><div class="val">${esc(v)}</div></div>`).join("")}</div>
+    <div class="grille g2 mt">
+      <div class="cadre"><h3>Compétences</h3>${P.competences.map(([n, v]) => `<div class="comp"><span>${esc(n)}</span><div class="barre" role="img" aria-label="${v} %"><i style="width:${v}%"></i></div><span>${v}%</span></div>`).join("")}</div>
+      <div class="cadre"><h3>En bref</h3>
+        <p class="doux">${P.situations.length} situations professionnelles · ${P.certifications.filter(c => c[2] === "ok").length} certifications obtenues · un laboratoire de ${P.infra.machines.length} machines.</p>
+        <a class="btn" href="#situations">Voir mes réalisations →</a> <a class="btn" href="#contact" style="border-color:var(--rose);color:var(--rose)">Me contacter</a></div>
+    </div>`,
+
+  parcours: () => `${entete("parcours", "Mon <em>parcours</em>")}
+    <div class="grille g2">
+      <div><ol class="frise">${P.parcours.map(([d, t, l, x]) => `<li><div class="carte"><span class="date">${esc(d)}</span><h3>${esc(t)}</h3><div class="doux" style="font-size:.9rem">${esc(l)}</div><p style="margin:.4em 0 0">${esc(x)}</p></div></li>`).join("")}</ol></div>
+      <div class="cadre" style="align-self:start"><h3>Outils maîtrisés</h3>${tags(P.outils, "c")}
+        <h3 class="mt">Qualités</h3>${tags(["Rigueur", "Autonomie", "Travail en équipe", "Curiosité"], "r")}</div>
+    </div>`,
+
+  situations: () => `${entete("situations professionnelles", "Mes <em>réalisations</em>")}
+    <div class="filtres" role="group" aria-label="Filtrer par bloc">
+      <button type="button" aria-pressed="true" data-f="0">Toutes</button>
+      ${Object.entries(BLOCS).map(([k, [n]]) => `<button type="button" aria-pressed="false" data-f="${k}">${n}</button>`).join("")}
+    </div>
+    <div class="grille g3" id="liste-sp">${P.situations.map((s, i) => `<article class="carte sp" data-bloc="${s.bloc}">
+      <span class="num">${esc(s.id)} · ${esc(s.cadre)}</span><h3>${esc(s.titre)}</h3><p>${esc(s.resume)}</p>
+      <div class="tags"><span class="tag ${BLOCS[s.bloc][1]}">${BLOCS[s.bloc][0]}</span>${s.outils.map(o => `<span class="tag">${esc(o)}</span>`).join("")}</div>
+      <button type="button" class="btn" data-sp="${i}">Détails →</button></article>`).join("")}</div>`,
+
+  infrastructure: () => `${entete("infrastructure", "Mon <em>laboratoire</em>")}
+    <div class="cadre"><p class="doux" style="margin-top:0">${esc(P.infra.texte)}</p>${schema()}</div>
+    <div class="cadre mt defile"><table><caption class="sr">Machines du laboratoire</caption>
+      <thead><tr><th>Machine</th><th>Système</th><th>Rôle</th><th>Adresse</th></tr></thead>
+      <tbody>${P.infra.machines.map(m => `<tr><td><b>${esc(m[0])}</b></td><td>${esc(m[1])}</td><td>${esc(m[2])}</td><td>${m[3]}</td></tr>`).join("")}</tbody></table></div>`,
+
+  certifications: () => `${entete("certifications", "Mes <em>certifications</em>")}
+    <div class="grille g3">${P.certifications.map(([t, o, e, a]) => `<div class="carte"><span class="etat ${e}">${{ ok: "✔ obtenue", en: "◷ en cours", prevu: "○ prévue" }[e]}</span>
+      <div class="date">${esc(a)}</div><h3 style="margin-top:4px">${esc(t)}</h3><div class="doux">${esc(o)}</div></div>`).join("")}</div>`,
+
+  veille: () => `${entete("veille technologique", "Ma <em>veille</em>")}
+    <div class="grille g2">
+      <div class="cadre"><p class="chemin">Sujet</p><h3>${esc(P.veille.sujet)}</h3><p class="doux">${esc(P.veille.pourquoi)}</p>
+        <p class="chemin mt">Outils de veille</p>${tags(P.veille.outils, "c")}</div>
+      <div class="cadre"><p class="chemin">Derniers articles</p>${P.veille.articles.map(([d, s, t]) => `<div class="article"><span class="date">${esc(d)} · ${esc(s)}</span>${esc(t)}</div>`).join("")}</div>
+    </div>`,
+
+  grilles: () => `${entete("grilles", "Tableau de <em>synthèse</em>")}
+    <p class="doux">Les compétences du bloc 1 mobilisées dans chaque situation professionnelle.</p>
+    <div class="cadre defile"><table class="tabsyn"><caption class="sr">Compétences par situation professionnelle</caption>
+      <thead><tr><th>Compétence</th>${P.situations.map(s => `<th title="${esc(s.titre)}">${esc(s.id)}</th>`).join("")}</tr></thead>
+      <tbody>${P.grille.competences.map((c, k) => `<tr><td>${esc(c)}</td>${P.situations.map(s => (P.grille.coches[s.id] || []).includes(k + 1) ? `<td class="ok-c" aria-label="oui">✔</td>` : `<td class="vide-c" aria-label="non">·</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+    ${P.grille.pdf ? `<a class="btn mt" href="${esc(P.grille.pdf)}" target="_blank" rel="noopener">Télécharger le tableau officiel (PDF)</a>` : ""}`,
+
+  contact: () => `${entete("contact", "Me <em>contacter</em>")}
+    <div class="grille g2 contact">${P.contact.map(([i, l, t, h]) => `<a class="carte" href="${esc(h)}" ${h.startsWith("http") ? 'target="_blank" rel="noopener"' : ""}><span class="ico" aria-hidden="true">${i}</span><span><span class="chemin" style="display:block;margin:0">${esc(l)}</span><b>${esc(t)}</b></span></a>`).join("")}</div>`
+};
+
+// schéma du laboratoire (SVG dessiné à partir des machines)
+function schema() {
+  const vl = [["VLAN 10 · Serveurs", "var(--violet)", ["DC-01", "SRV-GLPI", "SUPERVISION"]], ["VLAN 20 · DMZ", "var(--rose)", ["SRV-WEB"]], ["VLAN 30 · Postes", "var(--cyan)", ["PC-CLIENT"]]];
+  let s = `<svg class="schema" viewBox="0 0 720 300" role="img" aria-label="Schéma du laboratoire : Internet, pare-feu pfSense, switch et trois VLAN">
+    <style>.n{fill:#1e1b4b;stroke:#5c56b8;stroke-width:1.5}.t{fill:#e7e6f7;font:600 13px Nunito,sans-serif;text-anchor:middle}.p{fill:#a9a7d0;font:11px 'JetBrains Mono',monospace;text-anchor:middle}</style>
+    <rect class="n" x="300" y="10" width="120" height="40" rx="20"/><text class="t" x="360" y="35">🌐 Internet</text>
+    <line x1="360" y1="50" x2="360" y2="80" stroke="#5c56b8" stroke-width="2"/>
+    <rect class="n" x="290" y="80" width="140" height="46" rx="8" style="stroke:var(--orange)"/><text class="t" x="360" y="101">FW-01</text><text class="p" x="360" y="117">pfSense</text>
+    <line x1="360" y1="126" x2="360" y2="150" stroke="#5c56b8" stroke-width="2"/>
+    <rect class="n" x="300" y="150" width="120" height="36" rx="8"/><text class="t" x="360" y="173">Switch (trunk)</text>`;
+  const W = [320, 170, 170], X = [10, 350, 540];
+  vl.forEach(([nom, col, ms], i) => {
+    const x = X[i], w = W[i];
+    s += `<path d="M360 186 V205 H${x + w / 2} V220" fill="none" stroke="${col}" stroke-width="2"/>
+      <rect x="${x}" y="220" width="${w}" height="70" rx="10" fill="none" stroke="${col}" stroke-dasharray="5 4"/>
+      <text class="p" x="${x + w / 2}" y="238" style="fill:${col}">${nom}</text>`;
+    ms.forEach((m, j) => { const bw = (w - 20 - (ms.length - 1) * 6) / ms.length, bx = x + 10 + j * (bw + 6);
+      s += `<rect class="n" x="${bx}" y="248" width="${bw}" height="32" rx="6"/><text class="t" style="font-size:11px" x="${bx + bw / 2}" y="268">${m}</text>`; });
+  });
+  return s + `</svg>`;
+}
+
+// ---------- navigation par onglets (adresse #section) ----------
+const $main = document.getElementById("contenu");
+document.getElementById("logo").textContent = P.titre;
+document.getElementById("badges").innerHTML = P.badges.map(([c, t]) => `<span class="badge ${c}">→ ${esc(t)}</span>`).join("");
+document.getElementById("menu").innerHTML = SECTIONS.map(([id, n]) => `<li><a href="#${id}">${n}</a></li>`).join("");
+$main.innerHTML = SECTIONS.map(([id]) => `<section id="s-${id}" data-id="${id}" aria-label="${id}">${vues[id]()}</section>`).join("");
+document.getElementById("pied").innerHTML = `© ${new Date().getFullYear()} ${esc(P.prenom)} ${esc(P.nom)} · Portfolio BTS SIO option SISR`;
+document.title = `${P.prenom} ${P.nom} · Portfolio BTS SIO SISR`;
+
+function afficher() {
+  const id = (location.hash || "#accueil").slice(1);
+  const ok = SECTIONS.some(s => s[0] === id) ? id : "accueil";
+  document.querySelectorAll("main section").forEach(s => s.classList.toggle("active", s.dataset.id === ok));
+  document.querySelectorAll("#menu a").forEach(a => a.getAttribute("href") === "#" + ok ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+  const ul = document.getElementById("menu"), a = ul.querySelector(`a[href="#${ok}"]`);
+  ul.scrollLeft = a.offsetLeft - (ul.clientWidth - a.offsetWidth) / 2;
+  window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", afficher); afficher();
+
+// ---------- filtres des situations ----------
+document.querySelector(".filtres").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  document.querySelectorAll(".filtres button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  document.querySelectorAll("#liste-sp .sp").forEach(c => c.hidden = b.dataset.f !== "0" && c.dataset.bloc !== b.dataset.f);
+});
+
+// ---------- fenêtre de détail d'une situation ----------
+const dlg = document.getElementById("detail");
+document.getElementById("liste-sp").addEventListener("click", e => {
+  const b = e.target.closest("[data-sp]"); if (!b) return;
+  const s = P.situations[b.dataset.sp];
+  document.getElementById("detail-corps").innerHTML = `<button class="fermer" type="button" aria-label="Fermer" onclick="this.closest('dialog').close()">×</button>
+    <span class="num" style="font-family:var(--mono);font-size:.75rem;color:var(--rose)">${esc(s.id)} · ${esc(s.cadre)} · ${BLOCS[s.bloc][0]}</span>
+    <h3 id="detail-titre" style="font-size:1.6rem">${esc(s.titre)}</h3>
+    <h4>Contexte</h4><p class="doux" style="margin:0">${esc(s.contexte)}</p>
+    <h4>Ce que j'ai réalisé</h4><ul>${s.realise.map(r => `<li>${esc(r)}</li>`).join("")}</ul>
+    <h4>Compétences mobilisées</h4>${tags(s.competences, "c")}
+    <h4>Outils</h4>${tags(s.outils)}
+    ${s.doc ? `<a class="btn" href="${esc(s.doc)}" target="_blank" rel="noopener">Documentation (PDF)</a>` : ""}`;
+  dlg.showModal();
+});
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+</script>
 </body>
 </html>
